@@ -51,13 +51,21 @@ export default {
       currentType: "pop",
       isShow:false,
       tabOffsetTop:0,
-      isTabFixed:false
+      isTabFixed:false,
+      saveY:0
     };
   },
   computed: {
     showGoods() {
       return this.goods[this.currentType].list;
     }
+  },
+  activated(){
+    this.$refs.scroll.scroll.refresh()     //最好先刷新一下，否则会出现问题
+    this.$refs.scroll.scroll.scrollTo(0,this.saveY,0)
+  },
+  deactivated(){
+    this.saveY=this.$refs.scroll.scroll.y
   },
   created(){
     //created中只写主要逻辑

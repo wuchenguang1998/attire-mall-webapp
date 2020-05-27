@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <keep-alive exclude="Detail">  <!-- 排除name为Detail组件 -->
+      <router-view></router-view>
+    </keep-alive>
     <main-tabbar></main-tabbar>
   </div>
 </template>
