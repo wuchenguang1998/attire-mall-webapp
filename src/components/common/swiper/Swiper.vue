@@ -240,6 +240,6 @@
   }
 
   .indi-item.active {
-    background-color: rgba(212,62,46,1.0);
+    background-color: rgb(113, 113, 247);
   }
 </style>

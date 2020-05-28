@@ -21,13 +21,14 @@ import NavBar from 'components/common/navbar/NavBar'
     },
     data(){
       return{
-        titles:['商品','参数','评论','推荐'],
+        titles:['商品','参数','评论'],
         currentIndex:0
       }
     },
     methods:{
       titClick(index){
         this.currentIndex=index
+        this.$emit('titClick',index)
       },
       backClick(){
         this.$router.back()
