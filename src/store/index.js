@@ -10,10 +10,11 @@ const store=new Vuex.Store({
   state:{
     cartList:[]
   },
-  mutations:{
-    addCart(state,payload){
-      let oldProduct=null
-      for(let item of state.cartList){
+  actions:{
+    addCart(context,payload){
+      return new Promise((resolve, reject) => {
+        let oldProduct=null
+      for(let item of context.state.cartList){
         if(item.iid===payload.iid){
           oldProduct=item      //oldProduct指向了已有的item对象
         }
@@ -21,12 +22,14 @@ const store=new Vuex.Store({
       //2.判断oldProduct
       if(oldProduct){
         oldProduct.count+=1
-
+        resolve('当前商品数量加一')
       }else{
         payload.count=1
         payload.checked=true
-        state.cartList.push(payload)
+        context.state.cartList.push(payload)
+        resolve('添加新商品')
       }
+      })
     }
   },
   getters

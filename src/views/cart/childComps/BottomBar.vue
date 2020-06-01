@@ -25,6 +25,7 @@
         }, 0).toFixed(2)
       },
       isSelectAll: function () {
+        if(this.$store.getters.cartList.length==0) return false
         return this.$store.getters.cartList.find(item => item.checked === false) === undefined;
       }
     },

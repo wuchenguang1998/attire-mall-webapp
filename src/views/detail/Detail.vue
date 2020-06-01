@@ -145,7 +145,11 @@ export default {
       product.price=this.goods.realPrice
       product.iid=this.iid
       //2.将商品加入购物车
-      this.$store.commit('addCart',product)
+      this.$store.dispatch('addCart',product).then(res=>{
+        this.$toast.show(res,1500)
+      })
+      //3.添加购物车成功
+
     }
   }
 };
